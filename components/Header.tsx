@@ -207,17 +207,7 @@ function Header() {
                         <div className="px-4 py-3 text-sm text-white-700 ">
                             <div className="font-medium truncate">{user?.email}</div>
                         </div>
-                        <ul className="py-2 text-sm text-white-700" aria-labelledby="dropdownInformationButton">
-                            <li>
-                                <a href="#" className="block bg-black px-4 py-2 hover:underline">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block bg-black px-4 py-2 hover:underline">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block bg-black px-4 py-2 hover:underline">Earnings</a>
-                            </li>
-                        </ul>
+              
 
                         <div className="py-2">
                             <a className="block bg-black px-4 py-2 text-sm text-white-700 hover:underline cursor-pointer"
