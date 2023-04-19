@@ -158,6 +158,7 @@ function Modal() {
                             hover:bg-[#e6e6e6]" onClick={() => {
                                     router.push(`/movie-details`);
                                     movie?.id && setId((movie.id));
+                                   setShowModal(false);
                                 }}>
 
                                 <FaPlay className="h-7 w-7 text-black" />
