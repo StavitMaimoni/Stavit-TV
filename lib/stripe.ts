@@ -4,7 +4,6 @@ import {
 } from '@stripe/firestore-stripe-payments'
 import { getFunctions, httpsCallable } from '@firebase/functions'
 import app from '../firebase'
-import notifyService from '../services/notify-service'
 
 const payments = getStripePayments(app, {
   productsCollection: 'products',
@@ -18,7 +17,7 @@ const loadCheckout = async (priceId: string) => {
     cancel_url: window.location.origin,
   })
     .then((snapshot) => window.location.assign(snapshot.url))
-    .catch(err => notifyService.error(err))
+    .catch(err => console.log(err))
 }
 
 const goToBillingPortal = async () => {
@@ -32,7 +31,7 @@ const goToBillingPortal = async () => {
     returnUrl: `${window.location.origin}/account`,
   })
     .then(({ data }: any) => window.location.assign(data.url))
-    .catch(err => notifyService.error(err))
+    .catch(err =>console.log(err))
 }
 
 export { loadCheckout, goToBillingPortal }
