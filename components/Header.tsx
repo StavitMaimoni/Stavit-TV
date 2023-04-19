@@ -8,6 +8,7 @@ import { useRecoilState } from 'recoil';
 import { videoType, kidsClick, myListClick, newClick } from '../atoms/modalAtom.';
 import useList from '../hooks/useList';
 import useAuth from '../hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -17,9 +18,17 @@ function Header() {
     const [myList, setMyList] = useRecoilState(myListClick);
     const [newPopular, setNewPopular] = useRecoilState(newClick);
     const [statusKidsClick, setStatusKidsClick,] = useRecoilState(kidsClick);
-    const { user,logout } = useAuth();
+    const { user, logout } = useAuth();
     const list = useList(user?.uid);
-
+    const toastStyle = {
+        background: 'white',
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        padding: '15px',
+        borderRadius: '9999px',
+        maxWidth: '1000px',
+    }
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {
@@ -65,7 +74,7 @@ function Header() {
                             className="cursor-pointer object-contain"
                         /></a>
                 </Link>
-
+                <Toaster position="bottom-center" />
                 <BasicMenu />
 
                 <ul className="hidden space-x-4 md:flex">
@@ -155,13 +164,17 @@ function Header() {
                             </Link>
                         </>}
                         {list.length < 1 && <>
-                            <Link href="/">
-                                <a onClick={() => {
-                                    setActiveLink('series');
-                                    setMyList(true);
-                                }
-                                }>My List</a>
-                            </Link>
+                            <a onClick={() => {
+                                setMyList(true);
+                                toast(
+                                    ` Your list is empty. Start adding your favorite movies and TV shows to create your own personalized list.`,
+                                    {
+                                        duration: 8000,
+                                        style: toastStyle,
+                                    }
+                                );
+                            }
+                            }>My List</a>
                         </>}
 
                     </li>
@@ -207,7 +220,17 @@ function Header() {
                         <div className="px-4 py-3 text-sm text-white-700 ">
                             <div className="font-medium truncate">{user?.email}</div>
                         </div>
-              
+                        <ul className="py-2 text-sm text-white-700" aria-labelledby="dropdownInformationButton">
+                            <li>
+                                <a href="#" className="block bg-black px-4 py-2 hover:underline">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block bg-black px-4 py-2 hover:underline">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block bg-black px-4 py-2 hover:underline">Earnings</a>
+                            </li>
+                        </ul>
 
                         <div className="py-2">
                             <a className="block bg-black px-4 py-2 text-sm text-white-700 hover:underline cursor-pointer"
