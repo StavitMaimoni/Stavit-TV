@@ -2,7 +2,7 @@ const API_KEY = "08cc33bd5ae3a747598ce2ad84376e66";
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const requests = {
-    getSearchMovie: (searchText: string) => `${BASE_URL}/search/multi?api_key=${API_KEY}&query=${searchText}`,
+    getSearchMovie: (searchText: string) => `${BASE_URL}/search/tv?api_key=${API_KEY}&query=${searchText}`,
     //Movies genres:
     fetchTrending: `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`,
     fetchNetflixOriginals: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_networks=213`,
