@@ -71,7 +71,7 @@ function Search() {
                                         setId(s.id);
                                     }
                                     }
-                                    className="w-full sm:w-auto"
+                                    className="w-full sm:w-auto cursor-pointer"
                                 />
                                 <h5 className="text-white mt-4">{s.original_title}</h5>
                             </div>
