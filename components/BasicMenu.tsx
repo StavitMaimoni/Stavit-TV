@@ -74,16 +74,19 @@ export default function BasicMenu() {
                 <MenuItem onClick={() => {
                     router.push(`/`);
                     handleClose;
+                    setType('tv');
                 }
                 }>Home</MenuItem>
                 <MenuItem onClick={() => {
                     router.push(`/`);
                     handleClose;
+                    setType('tv');
                 }
                 }>TV Shows</MenuItem>
                 <MenuItem onClick={() => {
                     router.push(`/movies`);
                     handleClose;
+                    setType('movie');
                 }
                 }>Movies</MenuItem>
                 <MenuItem onClick={() => {
