@@ -61,7 +61,7 @@ export default function BasicMenu() {
             >
                 Browse
             </Button>
-            <Menu
+                  <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
@@ -71,47 +71,36 @@ export default function BasicMenu() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={() => {
+                <MenuItem key="home" onClick={() => {
                     router.push(`/`);
-                    handleClose;
-                }
-                }>Home</MenuItem>
-                <MenuItem onClick={() => {
+                    handleClose();
+                }}>Home</MenuItem>
+                <MenuItem key="tv-shows" onClick={() => {
                     router.push(`/`);
-                    handleClose;
-                }
-                }>TV Shows</MenuItem>
-                <MenuItem onClick={() => {
+                    handleClose();
+                }}>TV Shows</MenuItem>
+                <MenuItem key="movies" onClick={() => {
                     router.push(`/movies`);
-                    handleClose;
-                }
-                }>Movies</MenuItem>
-                <MenuItem onClick={() => {
+                    handleClose();
+                }}>Movies</MenuItem>
+                <MenuItem key="new-popular" onClick={() => {
                     router.push(`/new-popular`);
-                    handleClose;
-                }
-                }>New & Popular</MenuItem>
-                {list.length > 0 && <>
-                    <MenuItem onClick={() => {
-                        router.push(`/my-list`);
-                        handleClose;
-                    }
-                    }>My List</MenuItem>
-                </>}
-                {list.length < 1 && <>
-                    <MenuItem onClick={() => {
-                        toast(
-                            ` Your list is empty. Add your favorite movies and TV shows to create your list.`,
-                            {
-                                duration: 8000,
-                                style: toastStyle,
-                            }
-                        );
-                        handleClose;
-                    }
-                    }>My List</MenuItem>
-                </>}
-
+                    handleClose();
+                }}>New & Popular</MenuItem>
+                {list.length > 0 && <MenuItem key="my-list" onClick={() => {
+                    router.push(`/my-list`);
+                    handleClose();
+                }}>My List</MenuItem>}
+                {list.length < 1 && <MenuItem key="empty-list" onClick={() => {
+                    toast(
+                        ` Your list is empty. Add your favorite movies and TV shows to create your list.`,
+                        {
+                            duration: 8000,
+                            style: toastStyle,
+                        }
+                    );
+                    handleClose();
+                }}>My List</MenuItem>}
             </Menu>
         </div>
     )
