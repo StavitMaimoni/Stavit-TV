@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import useList from '../hooks/useList';
 import useAuth from '../hooks/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
+import { useRecoilState } from 'recoil';
+import { videoType } from '../atoms/modalAtom.';
 
 export default function BasicMenu() {
     const { user, logout } = useAuth();
@@ -29,6 +31,7 @@ export default function BasicMenu() {
         maxWidth: '1000px',
     }
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [type, setType] = useRecoilState(videoType);
 
     useEffect(() => {
         const handleResize = () => {
@@ -61,7 +64,7 @@ export default function BasicMenu() {
             >
                 Browse
             </Button>
-                  <Menu
+                 <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
